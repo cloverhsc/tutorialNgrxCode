@@ -11,13 +11,18 @@ import { movielistinfo, mvList } from './movies-store/movies.selectors';
   styleUrls: ['./movies.component.scss'],
 })
 export class MoviesComponent implements OnInit {
-  movies$!: Observable<MovieInfo[]>;
-  // movies$: Observable<MovieInfo[]> = this.store.select();
-  constructor(private store: Store, private movieServ: MoviesService) {}
+  // movies$!: Observable<MovieInfo[]>;
+  movies$: Observable<MovieInfo[]> = this.store.select((state) => state.movies);
+
+  constructor(
+    private store: Store<{ movies: MovieInfo[] }>,
+    private movieServ: MoviesService
+  ) {}
 
   ngOnInit(): void {
-    this.movieServ.getMovieList().subscribe((res: MovieInfo[]) => {
-      this.movies$ = of(res);
-    });
+    // this.movieServ.getMovieList().subscribe((res: MovieInfo[]) => {
+    //   this.movies$ = of(res);
+    // });
+    console.info(this.movies$);
   }
 }

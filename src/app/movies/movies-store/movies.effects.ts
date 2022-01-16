@@ -6,20 +6,20 @@ import { MoviesService } from '../services/movies.service';
 
 @Injectable()
 export class MovieEffects {
-  /* loadMovies$ = createEffect(() =>
+  loadMovies$ = createEffect(() =>
     this.actions$.pipe(
       ofType('[Movies Page] Get Movie list'),
-      exhaustMap(() =>
+      mergeMap(() =>
         this.moviesService.getMovieList().pipe(
-          map((movies) => {
-            console.log(movies);
-            return movies;
-          }),
+          map((movies) => ({
+            type: '[Movies Page] Get Movie list Success',
+            payload: movies,
+          })),
           catchError(() => of({ type: '[Movies page] Movies Loaded Error' }))
         )
       )
     )
-  ); */
+  );
 
   constructor(
     private actions$: Actions,

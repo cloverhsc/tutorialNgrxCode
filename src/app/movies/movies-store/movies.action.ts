@@ -8,4 +8,7 @@ export const movieListSuccess = createAction(
   (movies: MovieInfo[]) => ({ movies })
 );
 
-export const movieListError = createAction('[Movies Page] Movies Loaded Error');
+export const movieListError = createAction(
+  '[Movies Page] Movies Loaded Error',
+  (error: any) => ({ error })
+);

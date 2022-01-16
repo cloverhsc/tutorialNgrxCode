@@ -6,5 +6,8 @@ export const moviesInitialState: MovieInfo[] = [];
 
 export const moviesReducer = createReducer(
   moviesInitialState,
-  on(MoviesActions.movieListSuccess, (state, { movies }) => movies)
+  on(MoviesActions.movieListSuccess, (state, { movies }) => {
+    console.log(movies);
+    return movies;
+  })
 );
