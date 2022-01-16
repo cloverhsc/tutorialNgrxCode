@@ -26,7 +26,7 @@ export class AppComponent {
 
   ngOnInit() {
     this.booksService.getBooks().subscribe((books) => {
-      console.info(books);
+      // console.info(books);
       this.store.dispatch(retrievedBookList({ books }));
     });
   }
